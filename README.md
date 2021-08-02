@@ -1,0 +1,1 @@
+A strategy browser game

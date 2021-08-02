@@ -1,0 +1,39 @@
+{
+  "name": "browsergame",
+  "workspaces": [
+    "api",
+    "client"
+  ],
+  "version": "1.0.0",
+  "private": true,
+  "license": "MIT",
+  "scripts": {
+    "build:api": "npm run build --workspace api",
+    "build:client": "npm run build --workspace client",
+    "build": "npm run build --workspaces",
+    "start:api": "npm run start --workspace api",
+    "start:client": "npm run start --workspace client",
+    "start": "npm run start --workspaces",
+    "dev:api": "npm run dev --workspace api",
+    "dev:client": "echo 'React has no dev command, running YARN START intead...' && npm run start:client",
+    "dev": "concurrently \"npm run start:client\" \"npm run dev:api\"",
+    "test:api": "npm run test --workspace api",
+    "test:client": "npm run test --workspace client",
+    "test": "npm run test --workspaces",
+    "lint:api": "npm run lint --workspace api",
+    "lint:client": "npm run lint --workspace client",
+    "lint": "npm run lint --workspaces",
+    "lint:fix:api": "npm run lint:fix --workspace api",
+    "lint:fix:client": "npm run lint:fix --workspace client",
+    "lint:fix": "npm run lint:fix --workspaces"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "dependencies": {
+    "concurrently": "^6.2.0"
+  }
+}

@@ -1,7 +1,7 @@
 import express from 'express';
 import path from 'path';
 
-import { userController } from './controllers/userController';
+import { usersController } from './controllers/users.controller';
 
 // Create Express server
 const app = express();
@@ -15,6 +15,6 @@ app.use(
   express.static(path.join(__dirname, '../public'), { maxAge: 31557600000 })
 );
 
-userController(app);
+usersController(app);
 
 export default app;

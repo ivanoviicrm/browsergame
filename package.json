@@ -25,7 +25,11 @@
     "lint": "npm run lint --workspaces",
     "lint:fix:api": "npm run lint:fix --workspace api",
     "lint:fix:client": "npm run lint:fix --workspace client",
-    "lint:fix": "npm run lint:fix --workspaces"
+    "lint:fix": "npm run lint:fix --workspaces",
+    "mariaDB:start": "brew services start MariaDB",
+    "mariaDB:restart": "brew services restart MariaDB",
+    "mariaDB:stop": "brew services stop MariaDB",
+    "mariaDB:console": "mysql -u ivanrodriguez -p"
   },
   "eslintConfig": {
     "extends": [

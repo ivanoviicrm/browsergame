@@ -22,21 +22,19 @@ export class UsersService implements CRUD {
   }
 
   create(user: User): Promise<any> {
-    const values = Object.values(user).toString();
+    const values = Object.values(user).map((value) => `'${value}'`);
     const query = `INSERT INTO ${this.tableName}(id, name, email, password) VALUES(${values});`;
-
-    console.log(query);
 
     return this.db.query(query);
   }
 
   update(id: number, user: User): Promise<any> {
-    const values = Object.values(user).toLocaleString();
+    const query = `
+    UPDATE ${this.tableName}
+    SET name = '${user.name}', email = '${user.email}', password = '${user.password}'
+    WHERE id = ${id};`;
 
-    return this.db.query(`
-      INSERT INTO ${this.tableName}(id, name, email, password, createdAt, updatedAt, active)
-      VALUES(${values})
-      WHERE id = ${id};`);
+    return this.db.query(query);
   }
 
   deleteById(id: number): Promise<any> {

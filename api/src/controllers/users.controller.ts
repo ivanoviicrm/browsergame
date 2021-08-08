@@ -27,4 +27,22 @@ export const usersController = (app: Application): void => {
     const users = await usersService.create(req.body);
     return res.status(200).json(users);
   });
+
+  app.put('/users/:id', async (req: Request, res: Response) => {
+    if (!req.params?.id || isNaN(+req.params?.id) || !req.body) {
+      return res.status(400).json({ message: 'bad request' });
+    }
+
+    const users = await usersService.update(+req.params.id, req.body);
+    return res.status(200).json(users);
+  });
+
+  app.delete('/users/:id', async (req: Request, res: Response) => {
+    if (!req.params?.id || isNaN(+req.params?.id)) {
+      return res.status(400).json({ message: 'bad request' });
+    }
+
+    const users = await usersService.deleteById(+req.params.id);
+    return res.status(200).json(users);
+  });
 };

@@ -2,10 +2,6 @@ import express from 'express';
 import path from 'path';
 import { usersController } from './controllers/users.controller';
 import { CONFIG } from './config/config';
-import { pool } from './database/common/constants';
-
-// Connection to db
-pool.getConnection();
 
 // Create Express server
 const app = express();

@@ -18,4 +18,13 @@ export const usersController = (app: Application): void => {
     const users = await usersService.findById(+req.params.id);
     return res.status(200).json(users);
   });
+
+  app.post('/users', async (req: Request, res: Response) => {
+    if (!req.body) {
+      return res.status(400).json({ message: 'bad request' });
+    }
+
+    const users = await usersService.create(req.body);
+    return res.status(200).json(users);
+  });
 };

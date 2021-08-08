@@ -9,4 +9,13 @@ export const usersController = (app: Application): void => {
     const users = await usersService.findAll();
     return res.status(200).json(users);
   });
+
+  app.get('/users/:id', async (req: Request, res: Response) => {
+    if (!req.params?.id || isNaN(+req.params?.id)) {
+      return res.status(400).json({ message: 'bad request' });
+    }
+
+    const users = await usersService.findById(+req.params.id);
+    return res.status(200).json(users);
+  });
 };

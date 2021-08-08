@@ -12,11 +12,13 @@ export class UsersService implements CRUD {
   }
 
   findAll(limit?: number | undefined, page?: number | undefined): Promise<any> {
-    return this.db.query(`SELECT * FROM ${this.tableName};`);
+    const query = `SELECT * FROM ${this.tableName};`;
+    return this.db.query(query);
   }
 
   findById(id: number): Promise<any> {
-    return this.db.query(`SELECT * FROM ${this.tableName} WHERE 'id' = ${id};`);
+    const query = `SELECT * FROM ${this.tableName} WHERE id = ${id};`;
+    return this.db.query(query);
   }
 
   create(user: User): Promise<any> {
@@ -37,6 +39,7 @@ export class UsersService implements CRUD {
   }
 
   deleteById(id: number): Promise<any> {
-    return this.db.query(`DELETE FROM ${this.tableName} WHERE 'id' = ${id};`);
+    const query = `DELETE FROM ${this.tableName} WHERE id = ${id};`;
+    return this.db.query(query);
   }
 }
